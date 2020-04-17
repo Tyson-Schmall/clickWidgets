@@ -5,7 +5,7 @@ export default class Grow extends Component {
     super();
 
     this.state = {
-      size: 0
+      size: 25
     };
 
   }
@@ -21,13 +21,13 @@ export default class Grow extends Component {
       <div>
         <h2
           style={{
-            fontSize: `${this.state.size === 0 ? "normal" : this.state.size}px`
+            fontSize: `${this.state.size === "1.5em"  ? "normal" : `${this.state.size}px`}`
           }}
         >
           {this.state.size}
         </h2>
-        <button onClick={() => this.handleCrementer(1)}>Grow</button>
-        <button onClick={() => this.handleCrementer(-1)}>Shrink</button>
+        <button onClick={() => this.handleCrementer(-5)}>Shrink</button>
+        <button onClick={() => this.handleCrementer(5)}>Grow</button>
       </div>
     );
   }
