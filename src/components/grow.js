@@ -1,34 +1,24 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
-export default class Grow extends Component {
-  constructor() {
-    super();
+export default function Grow() {
+  const [growth, setGrowth] = useState(25);
 
-    this.state = {
-      size: 25
-    };
-
-  }
-
-  handleCrementer = increment => {
-    this.setState({
-      size: this.state.size + increment
-    });
+  const handleGrowth = (i) => {
+    setGrowth(growth + i);
   };
 
-  render() {
-    return (
-      <div>
-        <h2
-          style={{
-            fontSize: `${this.state.size === "1.5em"  ? "normal" : `${this.state.size}px`}`
-          }}
-        >
-          {this.state.size}
-        </h2>
-        <button onClick={() => this.handleCrementer(-5)}>Shrink</button>
-        <button onClick={() => this.handleCrementer(5)}>Grow</button>
-      </div>
-    );
-  }
+  return (
+    <div>
+      <hr />
+      <h2
+        style={{
+          fontSize: `${growth}px`,
+        }}
+      >
+        {growth}px
+      </h2>
+      <button onClick={() => handleGrowth(-5)}>Shrink</button>
+      <button onClick={() => handleGrowth(5)}>Grow</button>
+    </div>
+  );
 }

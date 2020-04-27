@@ -1,32 +1,26 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
-export default class Hidden extends Component {
-    constructor() {
-        super();
-        this.state = {
-            title: "iDisappear"
-        };
-    }
+export default function Hidden() {
+  const [stash, setStash] = useState("block");
 
-    hidden = () => {
-      if (this.state.title === "iDisappear") {
-        this.setState({
-          title: ""
-          });
-        } else if (this.state.title === "") {
-          this.setState({
-            title: "iDisappear"
-          });
+  const handleStash = (stashing) => {
+    setStash(stashing);
+  };
+
+  return (
+    <div>
+      <hr />
+      <h2 style={{ display: `${stash}` }}>Hide Me</h2>
+
+      <button
+        onClick={
+          stash === "block"
+            ? () => handleStash("none")
+            : () => handleStash("block")
         }
-    };
-
-    render() {
-        return (
-          <div>
-            <h2>{this.state.title}</h2>
-
-            <button onClick={this.hidden}>I hide the text</button>
-          </div>
-    );
-  }
+      >
+        I hide the text
+      </button>
+    </div>
+  );
 }

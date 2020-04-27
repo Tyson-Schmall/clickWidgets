@@ -1,34 +1,20 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
-export default class Counter extends Component {
-  constructor() {
-    super();
-    this.state = {
-      number: 0
-    };
-  }
+export default function Counter() {
+  const [count, setCount] = useState(0);
 
-  addnum = () => {
-    this.setState({
-      number: this.state.number + 1
-    });
+  const handleCrementer = (i) => {
+    setCount(count + i);
   };
 
-  subnum = () => {
-    this.setState({
-      number: this.state.number - 1
-    });
-  };
-
-  render() {
-    return (
-      <div>
-        {this.state.number}
-        <div>
-          <button onClick={() => this.addnum()}>add</button>
-          <button onClick={() => this.subnum()}>subtract</button>
-        </div>
-      </div>
-    );
-  }
+  return (
+    <div>
+      <hr />
+      <h1>{count}</h1>
+      <button onClick={() => handleCrementer(1)}>Add</button>
+      <button onClick={count > 0 ? () => handleCrementer(-1) : null}>
+        Subtract
+      </button>
+    </div>
+  );
 }

@@ -1,31 +1,24 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
-export default class Align extends Component {
-    constructor(props) {
-        super(props);
+export default function Align() {
+  const [alignment, setAlignment] = useState("center");
 
-        this.state = {
-            align: ""
-        }
-    }
+  const handleAlign = (pos) => {
+    setAlignment(pos);
+  };
 
-    handleAlign = align => {
-        this.setState({
-            align
-        })
-    }
+  return (
+    <div>
+      <hr />
+      <div className="align-content" style={{ justifyContent: `${alignment}` }}>
+        <div>
+          <h1>Push Me</h1>
+        </div>
+      </div>
 
-    render() {
-        return (
-            <div style={{ width: "100vw", display: "flex", alignItems: "center", justifyContent: "center"}}>
-                <div>
-                    <h1 style={{ textAlign: this.state.align }}>Push Me</h1>
-                    <button onClick={() => this.handleAlign("left")}>Left</button> 
-                    <button onClick={() => this.handleAlign("center")}>Center</button>            
-                    <button onClick={() => this.handleAlign("right")}>Right</button>            
-                </div>            
-            </div>
-
-        )
-    }
+      <button onClick={() => handleAlign("left")}>Left</button>
+      <button onClick={() => handleAlign("center")}>Center</button>
+      <button onClick={() => handleAlign("flex-end")}>Right</button>
+    </div>
+  );
 }

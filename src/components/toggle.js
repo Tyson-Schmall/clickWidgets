@@ -1,42 +1,19 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
-export default class Toggle extends Component {
-  constructor() {
-    super();
+export default function Toggle() {
+  const [word, setWord] = useState("Hello");
 
-    this.state = {
-      toggle: "Hello"
-    };
-
-  }
-
-  toggle = () => {
-    if (this.state.toggle === "Hello") {
-      this.setState({
-        toggle: "Goodbye"
-      });
-    } else if (this.state.toggle === "Goodbye") {
-      this.setState({
-        toggle: "I'm late! I'm late! I'm late!"
-      });
-    } else {
-        this.setState({
-            toggle: "Hello"
-        })
-    }
-  };
-
-  render() {
-    return (
-      <div>
-        {this.state.number}
-        <div>
-          {this.state.toggle}
-          <div>
-            <button onClick={() => this.toggle()}>Toggle Me!</button>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  return (
+    <div>
+      <hr />
+      <h1>{word}</h1>
+      <button
+        onClick={() => {
+          word === "Hello" ? setWord("Goodbye") : setWord("Hello");
+        }}
+      >
+        Toggle Me!
+      </button>
+    </div>
+  );
 }
